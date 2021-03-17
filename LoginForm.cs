@@ -117,6 +117,11 @@ namespace CarSales {
         {
 
         }
+
+        private void passwordVisible_CheckedChanged(object sender, EventArgs e)
+        {
+            passwordTextBox.PasswordChar = passwordVisible.Checked ? '\0' : '*';
+        }
     }
 }
 

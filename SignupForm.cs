@@ -92,5 +92,15 @@ namespace CarSales {
         {
 
         }
+
+        private void password1Visible_CheckedChanged(object sender, EventArgs e)
+        {
+            passwordTextBoxSignUpForm.PasswordChar = password1Visible.Checked ? '\0' : '*';
+        }
+
+        private void password2Visible_CheckedChanged(object sender, EventArgs e)
+        {
+            confirmPasswordTextboxSignUpForm.PasswordChar = password2Visible.Checked ? '\0' : '*';
+        }
     }
 }

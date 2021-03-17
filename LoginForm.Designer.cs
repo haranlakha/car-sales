@@ -32,6 +32,7 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordVisible = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textLabel
@@ -51,7 +52,7 @@
             this.loginFormButton.Location = new System.Drawing.Point(130, 260);
             this.loginFormButton.Name = "loginFormButton";
             this.loginFormButton.Size = new System.Drawing.Size(75, 23);
-            this.loginFormButton.TabIndex = 0;
+            this.loginFormButton.TabIndex = 2;
             this.loginFormButton.Text = "Login";
             this.loginFormButton.UseVisualStyleBackColor = true;
             this.loginFormButton.Click += new System.EventHandler(this.loginFormButton_Click);
@@ -62,7 +63,7 @@
             this.clearButton.Location = new System.Drawing.Point(130, 297);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 7;
+            this.clearButton.TabIndex = 4;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -73,7 +74,7 @@
             this.signupButton.Location = new System.Drawing.Point(282, 260);
             this.signupButton.Name = "signupButton";
             this.signupButton.Size = new System.Drawing.Size(75, 23);
-            this.signupButton.TabIndex = 8;
+            this.signupButton.TabIndex = 3;
             this.signupButton.Text = "Sign Up";
             this.signupButton.UseVisualStyleBackColor = true;
             this.signupButton.Click += new System.EventHandler(this.signupButton_Click);
@@ -84,7 +85,7 @@
             this.button1.Location = new System.Drawing.Point(282, 297);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -95,7 +96,7 @@
             this.usernameTextBox.Location = new System.Drawing.Point(257, 164);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.usernameTextBox.TabIndex = 2;
+            this.usernameTextBox.TabIndex = 0;
             // 
             // passwordTextBox
             // 
@@ -104,7 +105,7 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.passwordTextBox.TabIndex = 3;
+            this.passwordTextBox.TabIndex = 1;
             // 
             // usernameLabel
             // 
@@ -128,9 +129,21 @@
             this.passwordLabel.Text = "Password";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // passwordVisible
+            // 
+            this.passwordVisible.AutoSize = true;
+            this.passwordVisible.Location = new System.Drawing.Point(364, 218);
+            this.passwordVisible.Name = "passwordVisible";
+            this.passwordVisible.Size = new System.Drawing.Size(41, 17);
+            this.passwordVisible.TabIndex = 11;
+            this.passwordVisible.Text = "👁 ";
+            this.passwordVisible.UseVisualStyleBackColor = true;
+            this.passwordVisible.CheckedChanged += new System.EventHandler(this.passwordVisible_CheckedChanged);
+            // 
             // LoginForm
             // 
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.passwordVisible);
             this.Controls.Add(this.textLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.signupButton);
@@ -160,5 +173,6 @@
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.CheckBox passwordVisible;
     }
 }
