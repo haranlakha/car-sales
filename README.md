@@ -1,6 +1,8 @@
 # Car Sales program
 Simple car sales GUI which connects to a MySQL database, allowing the user to create an account and login.
 
+![carsales.PNG](https://raw.githubusercontent.com/haranlakha/car-sales/master/carsales.PNG)
+
 # Installation
 Clone this repository into Visual Studio.
 
