@@ -57,20 +57,33 @@ namespace CarSales {
                     return;
                 }
 
-                cmd.Parameters.AddWithValue("@username", usernameTextBoxSignUpForm.Text);
-                cmd.Parameters.AddWithValue("@password", passwordTextBoxSignUpForm.Text);
+                if (passwordTextBoxSignUpForm.Text.Equals(confirmPasswordTextboxSignUpForm.Text))
+                {
 
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Sign up Successful!\n\nHello " +  usernameTextBoxSignUpForm.Text + "\n");
-                connection.Close();
+                    cmd.Parameters.AddWithValue("@username", usernameTextBoxSignUpForm.Text);
+                    cmd.Parameters.AddWithValue("@password", passwordTextBoxSignUpForm.Text);
 
-                LoginForm loginForm = new LoginForm();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Sign up Successful!\n\nHello " + usernameTextBoxSignUpForm.Text + "\n");
 
-                this.Hide();
-                loginForm.StartPosition = FormStartPosition.Manual;
-                loginForm.Location = Location;
-                loginForm.Size = Size;
-                loginForm.Show();
+                    connection.Close();
+
+                    LoginForm loginForm = new LoginForm();
+
+                    this.Hide();
+                    loginForm.StartPosition = FormStartPosition.Manual;
+                    loginForm.Location = Location;
+                    loginForm.Size = Size;
+                    loginForm.Show();
+
+                }
+                else {
+                    MessageBox.Show("Passwords do not match!");
+                    usernameTextBoxSignUpForm.Clear();
+                    passwordTextBoxSignUpForm.Clear();
+                    confirmPasswordTextboxSignUpForm.Clear();
+                }
+
 
             }
         }

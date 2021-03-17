@@ -82,8 +82,9 @@
             // 
             this.confirmPasswordTextboxSignUpForm.Location = new System.Drawing.Point(192, 263);
             this.confirmPasswordTextboxSignUpForm.Name = "confirmPasswordTextboxSignUpForm";
+            this.confirmPasswordTextboxSignUpForm.PasswordChar = '*';
             this.confirmPasswordTextboxSignUpForm.Size = new System.Drawing.Size(100, 20);
-            this.confirmPasswordTextboxSignUpForm.TabIndex = 10;
+            this.confirmPasswordTextboxSignUpForm.TabIndex = 5;
             // 
             // SignupForm
             // 
