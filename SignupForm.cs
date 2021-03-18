@@ -35,31 +35,20 @@ namespace CarSales {
 
             int UserExists = Convert.ToInt32(checkUserExists.ExecuteScalar());
 
-            if (UserExists > 0) {
+            if (UserExists > 0){
                 MessageBox.Show("Username taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 usernameTextBoxSignUpForm.Clear();
                 passwordTextBoxSignUpForm.Clear();
                 confirmPasswordTextboxSignUpForm.Clear();
                 usernameTextBoxSignUpForm.Focus();
             } else {
-                if (usernameTextBoxSignUpForm.Text == "" && passwordTextBoxSignUpForm.Text == "") {
-                    MessageBox.Show("Please enter a username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    usernameTextBoxSignUpForm.Focus();
-                    return;
-                }
-                if (usernameTextBoxSignUpForm.Text == "") {
-                    MessageBox.Show("Please enter a username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    usernameTextBoxSignUpForm.Focus();
-                    return;
-                }
-                if (passwordTextBoxSignUpForm.Text == "") {
-                    MessageBox.Show("Please enter a password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    passwordTextBoxSignUpForm.Focus();
+                //checks for blank text boxes
+                if (usernameTextBoxSignUpForm.Text == "" || passwordTextBoxSignUpForm.Text == "" || confirmPasswordTextboxSignUpForm.Text == ""){
+                    MessageBox.Show("Please fill in all details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (passwordTextBoxSignUpForm.Text.Equals(confirmPasswordTextboxSignUpForm.Text))
-                {
+                if (passwordTextBoxSignUpForm.Text.Equals(confirmPasswordTextboxSignUpForm.Text)){
 
                     cmd.Parameters.AddWithValue("@username", usernameTextBoxSignUpForm.Text);
                     cmd.Parameters.AddWithValue("@password", passwordTextBoxSignUpForm.Text);
@@ -78,14 +67,12 @@ namespace CarSales {
                     loginForm.Show();
 
                 }
-                else {
+                else{
                     MessageBox.Show("Passwords do not match!");
                     usernameTextBoxSignUpForm.Clear();
                     passwordTextBoxSignUpForm.Clear();
                     confirmPasswordTextboxSignUpForm.Clear();
                 }
-
-
             }
         }
 
