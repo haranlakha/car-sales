@@ -39,6 +39,7 @@ namespace CarSales {
                 MessageBox.Show("Username taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 usernameTextBoxSignUpForm.Clear();
                 passwordTextBoxSignUpForm.Clear();
+                confirmPasswordTextboxSignUpForm.Clear();
                 usernameTextBoxSignUpForm.Focus();
             } else {
                 if (usernameTextBoxSignUpForm.Text == "" && passwordTextBoxSignUpForm.Text == "") {

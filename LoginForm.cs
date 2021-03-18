@@ -14,32 +14,6 @@ namespace CarSales {
 
         private void loginFormButton_Click(object sender, EventArgs e) {
 
-            if (count == 2) {
-                MessageBox.Show("Maximum login attempts reached\n\nExiting program", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-            if (usernameTextBox.Text == "" && passwordTextBox.Text == "") {
-                MessageBox.Show("Please enter a username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                usernameTextBox.Clear();
-                passwordTextBox.Clear();
-                usernameTextBox.Focus();
-                return;
-            }
-            if (usernameTextBox.Text == "") {
-                MessageBox.Show("Please enter a username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                usernameTextBox.Clear();
-                passwordTextBox.Clear();
-                usernameTextBox.Focus();
-                return;
-            }
-            if (passwordTextBox.Text == "") {
-                MessageBox.Show("Please enter a password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                usernameTextBox.Clear();
-                passwordTextBox.Clear();
-                usernameTextBox.Focus();
-                return;
-            }
-
             try {
 
                 var connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
@@ -55,6 +29,37 @@ namespace CarSales {
                 connection.Open();
 
                 MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (count == 2)
+                {
+                    MessageBox.Show("Maximum login attempts reached\n\nExiting program", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connection.Close();
+                    Application.Exit();
+                }
+                if (usernameTextBox.Text == "" && passwordTextBox.Text == "")
+                {
+                    MessageBox.Show("Please enter a username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usernameTextBox.Clear();
+                    passwordTextBox.Clear();
+                    usernameTextBox.Focus();
+                    return;
+                }
+                if (usernameTextBox.Text == "")
+                {
+                    MessageBox.Show("Please enter a username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usernameTextBox.Clear();
+                    passwordTextBox.Clear();
+                    usernameTextBox.Focus();
+                    return;
+                }
+                if (passwordTextBox.Text == "")
+                {
+                    MessageBox.Show("Please enter a password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usernameTextBox.Clear();
+                    passwordTextBox.Clear();
+                    usernameTextBox.Focus();
+                    return;
+                }
 
                 if (reader.Read()) {
                     MessageBox.Show("Login Succesful!\n\nHello " + reader["Username"].ToString());
