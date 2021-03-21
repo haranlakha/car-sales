@@ -13,5 +13,10 @@ namespace CarSales {
         public AccountForm() {
             InitializeComponent();
         }
+
+        private void AccountForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
