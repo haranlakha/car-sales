@@ -12,6 +12,8 @@ The database will need a table called "Users", with columns "Username" and "Pass
 
 (These names can be changed but you will need to amend the code accordingly).
 
+For this program you can [create a MySQL satabse on AWS](https://aws.amazon.com/getting-started/hands-on/create-mysql-db/).
+
 # Running the program
 Once you have correctly installed the program simply build and run it. Enjoy!
 
