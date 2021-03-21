@@ -6,7 +6,7 @@ Simple car sales GUI which connects to a MySQL database, allowing the user to cr
 # Installation
 Clone this repository into Visual Studio.
 
-Add your MySQL database credentials in an App.config file (as shown given in App.config.example).
+Add your MySQL database credentials in an App.config file (example shown in App.config.example).
 
 The database will need a table called "Users", with columns "Username" and "Password". (These names can be changed but you will need to amend the code accordingly).
 
