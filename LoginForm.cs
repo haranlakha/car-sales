@@ -24,7 +24,7 @@ namespace CarSales {
             }
 
             try {
-
+                //get connection string from configuration file
                 var connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -78,7 +78,6 @@ namespace CarSales {
                 passwordTextBox.Clear();
                 usernameTextBox.Focus();
             }
-           
         }
 
         private void signupButton_Click(object sender, EventArgs e) {

@@ -33,6 +33,7 @@ namespace CarSales {
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.Name = "AccountForm";
             this.Text = "AccountForm";
+            this.Load += new System.EventHandler(this.AccountForm_Load);
             this.ResumeLayout(false);
 
         }
