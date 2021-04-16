@@ -14,7 +14,3 @@ For this program you can [create a MySQL database using AWS](https://aws.amazon.
 
 # Running the program
 Once you have correctly installed the program simply build and run it. Enjoy!
-
-## Author
-
-* **Haran Lakha** - [GitHub](https://github.com/haranlakha) - [Twitter](https://twitter.com/haranlakha)
