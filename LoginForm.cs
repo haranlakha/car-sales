@@ -40,21 +40,24 @@ namespace CarSales {
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read()) {
+
                     MessageBox.Show("Login Succesful!\n\nHello " + reader["Username"].ToString());
+
+                    AccountForm accountForm = new AccountForm(reader["Username"].ToString(), reader["Password"].ToString());
                     connection.Close();
 
-                    AccountForm accountForm = new AccountForm();
                     this.Hide();
 
                     accountForm.StartPosition = FormStartPosition.Manual;
                     accountForm.Location = Location;
                     accountForm.Size = Size;
                     accountForm.Show();
-                }else if (count == 2){
+
+                } else if (count == 2) {
                     MessageBox.Show("Maximum login attempts reached\n\nExiting program", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     connection.Close();
                     Application.Exit();
-                }else{
+                } else {
                     MessageBox.Show("Username or Password incorrect\n\nNumber of attempts remaining: " + (2-count), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     usernameTextBox.Clear();
                     passwordTextBox.Clear();
@@ -99,13 +102,11 @@ namespace CarSales {
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
+        private void LoginForm_Load(object sender, EventArgs e) {
 
         }
 
-        private void passwordVisible_CheckedChanged(object sender, EventArgs e)
-        {
+        private void passwordVisible_CheckedChanged(object sender, EventArgs e) {
             passwordTextBox.PasswordChar = passwordVisible.Checked ? '\0' : '*';
         }
     }

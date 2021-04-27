@@ -40,7 +40,7 @@ namespace CarSales {
             int UserExists = Convert.ToInt32(checkUserExists.ExecuteScalar());
 
             //if the username entered is taken already, display a message to the user
-            if (UserExists > 0){
+            if (UserExists > 0) {
                 MessageBox.Show("Username taken", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 usernameTextBoxSignUpForm.Clear();
                 passwordTextBoxSignUpForm.Clear();
@@ -49,12 +49,12 @@ namespace CarSales {
 
             } else {
                 //checks for blank text boxes and display a message to the user
-                if (usernameTextBoxSignUpForm.Text == "" || passwordTextBoxSignUpForm.Text == "" || confirmPasswordTextboxSignUpForm.Text == ""){
+                if (usernameTextBoxSignUpForm.Text == "" || passwordTextBoxSignUpForm.Text == "" || confirmPasswordTextboxSignUpForm.Text == "") {
                     MessageBox.Show("Please fill in all details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (passwordTextBoxSignUpForm.Text.Equals(confirmPasswordTextboxSignUpForm.Text)){
+                if (passwordTextBoxSignUpForm.Text.Equals(confirmPasswordTextboxSignUpForm.Text)) {
                     
                     //add username and password to database
                     cmd.Parameters.AddWithValue("@username", usernameTextBoxSignUpForm.Text);
@@ -75,8 +75,7 @@ namespace CarSales {
                     loginForm.Size = Size;
                     loginForm.Show();
 
-                }
-                else{
+                } else {
                     //if passwords don't match show message to user
                     MessageBox.Show("Passwords do not match!");
                     usernameTextBoxSignUpForm.Clear();
@@ -86,18 +85,15 @@ namespace CarSales {
             }
         }
 
-        private void SignupForm_Load(object sender, EventArgs e)
-        {
+        private void SignupForm_Load(object sender, EventArgs e) {
 
         }
 
-        private void password1Visible_CheckedChanged(object sender, EventArgs e)
-        {
+        private void password1Visible_CheckedChanged(object sender, EventArgs e) {
             passwordTextBoxSignUpForm.PasswordChar = password1Visible.Checked ? '\0' : '*';
         }
 
-        private void password2Visible_CheckedChanged(object sender, EventArgs e)
-        {
+        private void password2Visible_CheckedChanged(object sender, EventArgs e) {
             confirmPasswordTextboxSignUpForm.PasswordChar = password2Visible.Checked ? '\0' : '*';
         }
     }
