@@ -3,27 +3,32 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace CarSales {
-    public partial class LoginForm : Form {
-
+namespace CarSales
+{
+    public partial class LoginForm : Form
+    {
         int count = 0;
 
-        public LoginForm() {
+        public LoginForm()
+        {
             InitializeComponent();
         }
 
-        private void loginFormButton_Click(object sender, EventArgs e) {
-
+        private void loginFormButton_Click(object sender, EventArgs e)
+        {
             //checks for blank text boxes
-            if (usernameTextBox.Text == "" || passwordTextBox.Text == ""){
+            if (usernameTextBox.Text == "" || passwordTextBox.Text == "")
+            {
                 MessageBox.Show("Please fill in all details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 usernameTextBox.Clear();
                 passwordTextBox.Clear();
                 usernameTextBox.Focus();
+
                 return;
             }
 
-            try {
+            try
+            {
                 //get connection string from configuration file
                 var connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
@@ -39,8 +44,8 @@ namespace CarSales {
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read()) {
-
+                if (reader.Read())
+                {
                     MessageBox.Show("Login Succesful!\n\nHello " + reader["Username"].ToString());
 
                     AccountForm accountForm = new AccountForm(reader["Username"].ToString(), reader["Password"].ToString());
@@ -53,60 +58,72 @@ namespace CarSales {
                     accountForm.Size = Size;
                     accountForm.Show();
 
-                } else if (count == 2) {
-                    MessageBox.Show("Maximum login attempts reached\n\nExiting program", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (count == 2)
+                {
+                    MessageBox.Show("Maximum login attempts reached!\n\nExiting program", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     connection.Close();
                     Application.Exit();
-                } else {
-                    MessageBox.Show("Username or Password incorrect\n\nNumber of attempts remaining: " + (2-count), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Username or Password incorrect!\n\nNumber of attempts remaining: " + (2-count), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     usernameTextBox.Clear();
                     passwordTextBox.Clear();
                     usernameTextBox.Focus();
                     count++;
                 }
-
-            } catch {
-                MessageBox.Show("An unknown error has occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch
+            {
+                MessageBox.Show("An unknown error has occured!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
 
-        private void clearButton_Click(object sender, EventArgs e) {
-
+        private void clearButton_Click(object sender, EventArgs e)
+        {
             if (MessageBox.Show("Clear inputs?",
                       "Clear Input",
                        MessageBoxButtons.YesNo,
-                       MessageBoxIcon.Information) == DialogResult.Yes) {
+                       MessageBoxIcon.Information) == DialogResult.Yes)
+            {
                 usernameTextBox.Clear();
                 passwordTextBox.Clear();
                 usernameTextBox.Focus();
             }
         }
 
-        private void signupButton_Click(object sender, EventArgs e) {
-
+        private void signupButton_Click(object sender, EventArgs e)
+        {
             SignupForm signupForm = new SignupForm();
+
             this.Hide();
+
             signupForm.StartPosition = FormStartPosition.Manual;
             signupForm.Location = Location;
             signupForm.Size = Size;
+
             signupForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void button1_Click(object sender, EventArgs e)
+        {
             if (MessageBox.Show("Are you sure you want to exit?",
                       "Exit Dialog",
                        MessageBoxButtons.YesNo,
-                       MessageBoxIcon.Information) == DialogResult.Yes) {
+                       MessageBoxIcon.Information) == DialogResult.Yes)
+            {
                 Application.Exit();
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e) {
-
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
         }
 
-        private void passwordVisible_CheckedChanged(object sender, EventArgs e) {
+        private void passwordVisible_CheckedChanged(object sender, EventArgs e)
+        {
             passwordTextBox.PasswordChar = passwordVisible.Checked ? '\0' : '*';
         }
     }
