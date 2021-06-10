@@ -7,8 +7,8 @@ namespace CarSales {
     public partial class AccountForm : Form {
         public AccountForm(string username, string password) {
             InitializeComponent();
-            this.currentUser = username;
-            this.currentPass = password;
+            currentUser = username;
+            currentPass = password;
         }
 
         public string currentUser {
@@ -18,12 +18,6 @@ namespace CarSales {
             get;
         }
 
-        /*
-        have text box for username and password
-        if inputs equals account username and passworddelete account.
-
-        confirmation box pop up. "Are you sure?"
-         */
         private void AccountForm_Load(object sender, EventArgs e) {
 
         }
@@ -50,6 +44,18 @@ namespace CarSales {
                     reader = cmd.ExecuteReader();
 
                     connection.Close();
+
+                    LoginForm loginForm = new LoginForm();
+
+                    usernameTextBox.Clear();
+                    passwordText.Clear();
+                    confirmPassword.Clear();
+
+                    this.Hide();
+                    loginForm.StartPosition = FormStartPosition.Manual;
+                    loginForm.Location = Location;
+                    loginForm.Size = Size;
+                    loginForm.Show();
                 }
                 else {
 
@@ -76,7 +82,6 @@ namespace CarSales {
                 usernameTextBox.Focus();
             }
         }
-
         private void firstPasswordVisible_CheckedChanged(object sender, EventArgs e) {
             passwordText.PasswordChar = firstPassVisible.Checked ? '\0' : '*';
         }
