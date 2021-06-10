@@ -33,14 +33,15 @@ namespace CarSales {
             this.confirmPassword = new System.Windows.Forms.TextBox();
             this.passwordText = new System.Windows.Forms.TextBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // deleteAccountBtn
             // 
             this.deleteAccountBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.deleteAccountBtn.Location = new System.Drawing.Point(182, 319);
+            this.deleteAccountBtn.Location = new System.Drawing.Point(121, 317);
             this.deleteAccountBtn.Name = "deleteAccountBtn";
-            this.deleteAccountBtn.Size = new System.Drawing.Size(120, 23);
+            this.deleteAccountBtn.Size = new System.Drawing.Size(88, 23);
             this.deleteAccountBtn.TabIndex = 0;
             this.deleteAccountBtn.Text = "Delete Account";
             this.deleteAccountBtn.UseVisualStyleBackColor = true;
@@ -126,11 +127,22 @@ namespace CarSales {
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.usernameTextBox.TabIndex = 15;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(288, 317);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Log Out";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
             // AccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.usernameLabel);
@@ -159,5 +171,6 @@ namespace CarSales {
         private System.Windows.Forms.TextBox confirmPassword;
         private System.Windows.Forms.TextBox passwordText;
         private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

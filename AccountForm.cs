@@ -18,10 +18,14 @@ namespace CarSales
         public string currentUser
         {
             get;
+            set;
         }
+        
+
         public string currentPass
         {
             get;
+            set;
         }
 
         private void AccountForm_Load(object sender, EventArgs e)
@@ -103,6 +107,30 @@ namespace CarSales
         private void secondPasswordVisible_CheckedChanged(object sender, EventArgs e)
         {
             confirmPassword.PasswordChar = secondPassVisible.Checked ? '\0' : '*';
+        }
+
+        //function which prompts user with message box once they click log out
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to log out?",
+                      "Log Out Dialog",
+                       MessageBoxButtons.YesNo,
+                       MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                //clear username and password on exit
+                currentUser = null;
+                currentPass = null;
+
+                LoginForm loginForm = new LoginForm();
+
+                this.Hide();
+
+                loginForm.StartPosition = FormStartPosition.Manual;
+                loginForm.Location = Location;
+                loginForm.Size = Size;
+
+                loginForm.Show();
+            }
         }
     }
 }
