@@ -16,7 +16,7 @@ namespace CarSales
 
         private void loginFormButton_Click(object sender, EventArgs e)
         {
-            //checks for blank text boxes
+            // Checks for blank text boxes.
             if (usernameTextBox.Text == "" || passwordTextBox.Text == "")
             {
                 MessageBox.Show("Please fill in all details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -29,7 +29,7 @@ namespace CarSales
 
             try
             {
-                //get connection string from configuration file
+                // Get connection string from configuration file.
                 var connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
 

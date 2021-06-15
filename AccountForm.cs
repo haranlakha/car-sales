@@ -35,7 +35,7 @@ namespace CarSales
         {
             if (usernameTextBox.Text.Equals(currentUser) && passwordText.Text.Equals(currentPass) && confirmPassword.Text.Equals(currentPass))
             {
-                //all conditions met, delete account
+                // All conditions met, delete account.
 
                 var connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
                 MySqlConnection connection = new MySqlConnection(connectionString);
@@ -109,7 +109,7 @@ namespace CarSales
             confirmPassword.PasswordChar = secondPassVisible.Checked ? '\0' : '*';
         }
 
-        //function which prompts user with message box once they click log out
+        // Function which prompts user with message box once they click log out.
         private void logoutBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to log out?",
@@ -117,7 +117,7 @@ namespace CarSales
                        MessageBoxButtons.YesNo,
                        MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                //clear username and password on exit
+                // Clear username and password on exit.
                 currentUser = null;
                 currentPass = null;
 

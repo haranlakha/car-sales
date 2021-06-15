@@ -28,14 +28,14 @@ namespace CarSales
         private void SignUpButtonSignUpForm_Click(object sender, EventArgs e)
         {
 
-            //get connection string from configuration file
+            // Get connection string from configuration file.
             var connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             connection.Open();
 
-            //SQL queries
+            // SQL queries.
             string query = "INSERT INTO Users(Username, Password) VALUES(@username, @password)";
             string userQuery = "SELECT count(*) FROM Users WHERE Username = @usernamecheck";
           
@@ -46,7 +46,7 @@ namespace CarSales
 
             int UserExists = Convert.ToInt32(checkUserExists.ExecuteScalar());
 
-            //if the username entered is taken already, display a message to the user
+            // If the username entered is taken already, display a message to the user.
             if (UserExists > 0)
             {
                 MessageBox.Show("Username is already in use!\nPlease choose another", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -59,7 +59,7 @@ namespace CarSales
             }
             else
             {
-                //checks for blank text boxes and display a message to the user
+                // Checks for blank text boxes and display a message to the user.
                 if (usernameTextBoxSignUpForm.Text == "" || passwordTextBoxSignUpForm.Text == "" || confirmPasswordTextboxSignUpForm.Text == "")
                 {
                     MessageBox.Show("Please fill in all details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -70,7 +70,7 @@ namespace CarSales
                 if (passwordTextBoxSignUpForm.Text.Equals(confirmPasswordTextboxSignUpForm.Text))
                 {
                     
-                    //add username and password to database
+                    // Add username and password to database.
                     cmd.Parameters.AddWithValue("@username", usernameTextBoxSignUpForm.Text);
                     cmd.Parameters.AddWithValue("@password", passwordTextBoxSignUpForm.Text);
 
@@ -82,7 +82,7 @@ namespace CarSales
                     
                     LoginForm loginForm = new LoginForm();
 
-                    //close current form and open login form in same position
+                    // Close current form and open login form in same position.
                     this.Hide();
 
                     loginForm.StartPosition = FormStartPosition.Manual;
@@ -94,7 +94,7 @@ namespace CarSales
                 }
                 else
                 {
-                    //if passwords don't match show message to user
+                    // If passwords don't match show message to user.
                     MessageBox.Show("Passwords do not match!");
                     usernameTextBoxSignUpForm.Clear();
                     passwordTextBoxSignUpForm.Clear();
